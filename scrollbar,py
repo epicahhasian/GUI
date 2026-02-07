@@ -1,0 +1,33 @@
+from tkinter import* 
+
+screen = Tk()
+screen.geometry ("450x300")
+
+
+scrollbar = Scrollbar(screen)
+scrollbar.pack(side = RIGHT,fill = Y)
+
+
+randomstuff = Listbox(screen,yscrollcommand = scrollbar.set)
+
+
+
+
+
+for i in range (1,100):
+    randomstuff.insert(i,"yo wsg bro" +str(i))
+
+randomstuff.pack(side=LEFT, fill=BOTH)
+scrollbar.config(command=randomstuff.yview)
+
+
+
+
+
+
+
+
+
+
+
+mainloop()
