@@ -53,22 +53,22 @@ def playerchoice(playerinput):
     if playerinput==botinput:
         tie()
 
-    if playerinput == 0:
-        if botinput== 1:
+    if playerinput[1] == 0:
+        if botinput[1]== 1:
             botwinner()
-        elif botinput==2:
+        elif botinput[1]==2:
             playerwinner()
 
-    if playerinput== 1:
-        if botinput==0:
+    if playerinput[1]== 1:
+        if botinput[1]==0:
             playerwinner()
-        elif botinput==2:
+        elif botinput[1]==2:
             botwinner()
 
-    if playerinput==2:
-        if botinput==0:
+    if playerinput[1]==2:
+        if botinput[1]==0:
             botwinner()
-        elif botinput==1:
+        elif botinput[1]==1:
             playerwinner()
     
     
