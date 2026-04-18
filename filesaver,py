@@ -1,0 +1,53 @@
+from tkinter import* 
+from tkinter.filedialog import*
+
+
+screen = Tk()
+screen.geometry("450x300")
+screen.title("Your Files")
+
+
+
+
+def deletefile():
+    store = files.curselection()
+    if store:
+        files.delete(store)
+
+
+def addfile():
+    files.insert(END,filenameadd.get())
+    filenameadd.delete(0,END)
+listboxscreen = Frame(screen)
+
+save = Button(screen,text = "SAVE",width = 10)
+save.place(x=190,y=20)
+
+filenameadd = Entry(screen,width=20)
+filenameadd.place(x=170,y=60)
+
+add = Button(screen,text = "^ADD FILE ABOVE^",command = addfile)
+add.place(x=175,y=100)
+
+delete = Button(screen,text = "DELETE",width = 10,command = deletefile )
+delete.place(x=50,y=150)
+
+open = Button(screen,text = "OPEN",width = 10)
+open.place(x=310,y=150)
+
+scrollbar = Scrollbar(listboxscreen,orient = "vertical")
+scrollbar.pack(side=RIGHT,fill=Y)
+
+files = Listbox(listboxscreen,width= 20,height = 45,bg = "Sky Blue",yscrollcommand= scrollbar.set)
+files.pack(side= LEFT)
+
+scrollbar.config(command=files.yview)
+
+for i in range(1,100):
+    files.insert(END,i)
+
+
+listboxscreen.place(x=175,y=150)
+
+
+mainloop()
