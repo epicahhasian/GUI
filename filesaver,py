@@ -20,7 +20,22 @@ def addfile():
     filenameadd.delete(0,END)
 listboxscreen = Frame(screen)
 
-save = Button(screen,text = "SAVE",width = 10)
+def openfile():
+    actualfile = askopenfile(title="Open File")
+    if actualfile is not None:
+        files.delete(0,END)
+        item=actualfile.readlines()
+        for i in item:
+            files.insert(END,i.strip())
+
+
+def savefile():
+    newfile = asksaveasfile(defaultextension=".txt")
+    if newfile is not None:
+        for i in files.get(0,END):
+            print(i.strip(),file=newfile)
+        files.delete(0,END)
+save = Button(screen,text = "SAVE",width = 10,command = savefile)
 save.place(x=190,y=20)
 
 filenameadd = Entry(screen,width=20)
@@ -32,13 +47,13 @@ add.place(x=175,y=100)
 delete = Button(screen,text = "DELETE",width = 10,command = deletefile )
 delete.place(x=50,y=150)
 
-open = Button(screen,text = "OPEN",width = 10)
+open = Button(screen,text = "OPEN",width = 10,command = openfile)
 open.place(x=310,y=150)
 
 scrollbar = Scrollbar(listboxscreen,orient = "vertical")
 scrollbar.pack(side=RIGHT,fill=Y)
 
-files = Listbox(listboxscreen,width= 20,height = 45,bg = "Sky Blue",yscrollcommand= scrollbar.set)
+files = Listbox(listboxscreen,width= 20,height = 9,bg = "Sky Blue",yscrollcommand= scrollbar.set)
 files.pack(side= LEFT)
 
 scrollbar.config(command=files.yview)
